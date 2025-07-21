@@ -1,5 +1,7 @@
 namespace Desktop.AspNet
+
 #nowarn "20"
+
 open System
 open System.Collections.Generic
 open System.IO
@@ -19,14 +21,17 @@ module Program =
 
     [<EntryPoint>]
     let main args =
-
         let builder = WebApplication.CreateBuilder(args)
 
         builder.Services.AddControllers()
 
+        // Only listen to HTTP
+        builder.WebHost.ConfigureKestrel(fun options -> options.ListenAnyIP(5000))
+        |> ignore
+
         let app = builder.Build()
 
-        app.UseHttpsRedirection()
+        // app.UseHttpsRedirection()
 
         app.UseAuthorization()
         app.MapControllers()
