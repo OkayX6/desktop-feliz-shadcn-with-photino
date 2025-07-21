@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="index.html" />
+        <Compile Include="Tests.fs" />
+    </ItemGroup>
+    <ItemGroup />
+    <ItemGroup>
+        <ProjectReference Include="..\UserInterface\UserInterface.fsproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Fable.Mocha" Version="2.9.1" />
+    </ItemGroup>
+</Project>
