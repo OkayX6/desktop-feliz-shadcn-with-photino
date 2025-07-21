@@ -25,13 +25,7 @@ module Program =
 
         builder.Services.AddControllers()
 
-        // Only listen to HTTP
-        builder.WebHost.ConfigureKestrel(fun options -> options.ListenAnyIP(5000))
-        |> ignore
-
         let app = builder.Build()
-
-        // app.UseHttpsRedirection()
 
         app.UseAuthorization()
         app.MapControllers()
