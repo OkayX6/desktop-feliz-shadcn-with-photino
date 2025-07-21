@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -27,6 +27,8 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Build", "Build\Build.fsproj", "{982608AE-FA19-46D8-B615-C24E40BFE6C4}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.Tests", "Desktop.Tests\Desktop.Tests.fsproj", "{2359EB95-2034-43C9-B817-FA7C0E6D62F7}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.AspNet", "Desktop.AspNet\Desktop.AspNet.fsproj", "{15669075-8B10-4470-B296-4F31CF843111}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{2359EB95-2034-43C9-B817-FA7C0E6D62F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2359EB95-2034-43C9-B817-FA7C0E6D62F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2359EB95-2034-43C9-B817-FA7C0E6D62F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15669075-8B10-4470-B296-4F31CF843111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15669075-8B10-4470-B296-4F31CF843111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15669075-8B10-4470-B296-4F31CF843111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15669075-8B10-4470-B296-4F31CF843111}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
