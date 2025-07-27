@@ -19,19 +19,40 @@ open Microsoft.AspNetCore.Mvc
 
 
 module Program =
+    open PhotinoNET
+    open System.Text.Json
+
     let exitCode = 0
 
-    [<EntryPoint>]
+    let desktopUrl = "http://localhost:8080"
+    // if isDevelopment
+    // // during development assume webpack dev server is running
+    // then "http://localhost:8080"
+    // // in release mode we run Suave on a random port
+    // // which will host the static files generated
+    // else $"http://localhost:{randomPort}/index.html"
+
+    [<EntryPoint; STAThread>]
     let main args =
         let builder = WebApplication.CreateBuilder(args)
 
-        builder.Services.AddControllers()
+        builder
+            .Services
+            .AddControllers()
+            .AddJsonOptions(fun options -> options.JsonSerializerOptions.PropertyNamingPolicy <- null)
 
         let app = builder.Build()
 
         app.UseAuthorization()
         app.MapControllers()
 
-        app.Run()
+        Task.Run(fun () -> app.Run()) |> ignore
+
+        let window = new PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
+
+        window
+            .Center()
+            .Load(Uri(desktopUrl))
+            .WaitForClose()
 
         exitCode
