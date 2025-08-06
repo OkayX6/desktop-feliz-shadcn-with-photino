@@ -1,8 +1,10 @@
 ## TODO
 - [ ] remove WebPack after its tested
-- [ ] migrate README.md
+- [ ] migrate README.md content to make it meaningful
 - [ ] migrate package.json after its tested and all scenarios are working
 
 ## Ongoing
-- [ ] I'm testing that `npm start:vite` works
+- [x] I'm testing that `npm start:vite` works
+    - [ ] Migrate all code from UserInterface to UserInterface.Vite
+    - [ ] At the end, remove all mentions of UserInterface.Vite and migrate back to UserInterface
 - [ ] I'm testing that `npm build:vite` works
