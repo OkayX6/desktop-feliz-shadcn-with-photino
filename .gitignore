@@ -19,6 +19,9 @@ tests-js
 deploy
 # Build results
 
+# IntelliJ
+.idea/
+
 [Dd]ebug/
 [Rr]elease/
 x64/
