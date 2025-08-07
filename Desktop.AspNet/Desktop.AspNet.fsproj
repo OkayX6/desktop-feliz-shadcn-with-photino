@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fable.Remoting.Suave" Version="4.24.0" />
+    <PackageReference Include="Fable.Remoting.AspNetCore" Version="2.43.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.0" />
     <PackageReference Include="Photino.NET" Version="2.1.9" />
   </ItemGroup>
 

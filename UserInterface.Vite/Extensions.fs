@@ -4,6 +4,15 @@ module Extensions
 open System
 open Fable.Core
 open Fable.Core.JsInterop
+open Shared
+open Fable.Remoting.Client
+
+[<RequireQualifiedAccess>]
+module Server = 
+    let Api = 
+        Remoting.createApi()
+        |> Remoting.withRouteBuilder routerPaths
+        |> Remoting.buildProxy<IServerApi>
 
 [<RequireQualifiedAccess>]
 module StaticFile =

@@ -12,4 +12,4 @@ type SystemInfo = { Platform: string; Version: string }
 type IServerApi =
     { Counter: unit -> Async<Counter>
       SystemInfo: unit -> Async<SystemInfo>
-      Update: unit -> Async<unit> }
+      Update: unit -> Async<int> }

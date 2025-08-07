@@ -22,6 +22,10 @@ let serverApi : IServerApi = {
             Version = Environment.OSVersion.VersionString
         }
     }
+    
+    Update = fun () -> async {
+        return ()
+    }
 }
 
 let webApi =
