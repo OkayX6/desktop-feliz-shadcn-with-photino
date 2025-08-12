@@ -1,0 +1,7 @@
+[*.fs]
+indent_size=2
+max_line_length=120
+fsharp_max_value_binding_width=120
+fsharp_max_record_width=100
+fsharp_max_infix_operator_expression=60
+fsharp_max_dot_get_expression_width=80

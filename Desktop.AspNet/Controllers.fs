@@ -27,3 +27,13 @@ type SystemInfo(logger: ILogger<SystemInfo>) =
     member _.Get() =
         {| Platform = Environment.OSVersion.Platform.ToString()
            Version = Environment.OSVersion.VersionString |}
+
+
+// Need to read the docs: https://github.com/Zaid-Ajaj/Fable.Remoting
+[<ApiController>]
+[<Route("api/[controller]")>] // This will make the route /api/mydata
+type Update(logger: ILogger<SystemInfo>) =
+    inherit ControllerBase()
+
+    [<HttpPost>]
+    member _.Update() = ()

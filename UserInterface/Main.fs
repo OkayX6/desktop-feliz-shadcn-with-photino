@@ -4,9 +4,7 @@ open Feliz
 open Browser.Dom
 open Fable.Core.JsInterop
 
-importAll "./styles/global.scss"
+importAll "./styles/global.css"
 
-ReactDOM.render(
-    App.SystemInfo(),
-    document.getElementById "feliz-app"
-)
+let root = ReactDOM.createRoot (document.getElementById "feliz-app")
+root.render (App.SystemInfo())
