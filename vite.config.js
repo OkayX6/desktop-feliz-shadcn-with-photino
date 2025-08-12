@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   root: "./UserInterface",
   build: {
-    outDir: "./dist",
+    outDir: "../dist",
   },
   // Only in dev mode
   // This allows us to redirect /api urls to the ASP.Net server
