@@ -8,8 +8,7 @@
         "test:live": "dotnet fable watch ./UserInterface.Tests --run webpack-dev-server --config ./webpack.tests.js",
         "build:test": "dotnet fable ./UserInterface.Tests && webpack --config webpack.tests.js",
         "pretest": "dotnet tool restore && dotnet fable clean --yes",
-        "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm",
-        "clean": "dotnet fable clean UserInterface --yes"
+        "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm"
     },
     "dependencies": {
         "react": "^18.2.0",
