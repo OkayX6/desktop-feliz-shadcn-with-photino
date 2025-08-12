@@ -30,7 +30,7 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.Tests", "Desktop.Te
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.AspNet", "Desktop.AspNet\Desktop.AspNet.fsproj", "{15669075-8B10-4470-B296-4F31CF843111}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UserInterface.Vite", "UserInterface.Vite\UserInterface.Vite.fsproj", "{401209D4-25F1-4987-A40D-A0475EDEF74D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UserInterface", "UserInterfaceInterface.fspr"{401209D4-25F1-4987-A40D-A0475EDEF74D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

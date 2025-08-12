@@ -14,6 +14,6 @@
     - [x] Main.fs
     - [x] Extensions.fs
     - [x] styles.scss -> global.css
-  - [ ] At the end, remove all mentions of UserInterface.Vite and migrate back to UserInterface
+  - [x] At the end, remove all mentions of UserInterface.Vite and migrate back to UserInterface
 - [ ] Migrate & test that `npm run clean` works
 - [ ] I'm testing that `npm build:vite` works
