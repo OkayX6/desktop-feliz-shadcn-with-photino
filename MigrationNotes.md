@@ -18,4 +18,4 @@
   - [x] At the end, remove all mentions of UserInterface.Vite and migrate back to UserInterface
 - [x] Migrate & test that `npm run clean` works -> useless
 - [x] I'm testing that `npm run build:vite` works -> migrate to `npm run build`
-- [ ] Migrate `npm run test` (mocha is broken apparently)
+- [x] Migrate `npm run test` (mocha is broken apparently)
