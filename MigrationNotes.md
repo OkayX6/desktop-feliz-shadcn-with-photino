@@ -3,7 +3,7 @@
 - [ ] Rename **Desktop.AspNet** to **Desktop** after it gets feature parity
 - [x] remove WebPack after its tested
 - [ ] migrate **README.md** content to make it meaningful
-- [ ] migrate **package.json** after its tested and all scenarios are working
+- [x] migrate **package.json** after its tested and all scenarios are working
 - [x] add .editorconfig
 
 ## Ongoing
