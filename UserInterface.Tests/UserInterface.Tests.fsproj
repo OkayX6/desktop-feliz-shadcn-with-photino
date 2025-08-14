@@ -11,6 +11,6 @@
         <ProjectReference Include="..\UserInterface\UserInterface.fsproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Fable.Mocha" Version="2.9.1" />
+        <PackageReference Include="Fable.Mocha" Version="2.17.0" />
     </ItemGroup>
 </Project>

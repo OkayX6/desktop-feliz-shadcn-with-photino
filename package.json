@@ -4,8 +4,8 @@
         "prestart": "dotnet tool restore && dotnet fable clean --yes",
         "start": "dotnet fable watch ./UserInterface --runFast vite",
         "prebuild": "dotnet tool restore && dotnet fable clean --yes",
-        "build": "dotnet fable ./UserInterface && webpack",
-        "test:live": "dotnet fable watch ./UserInterface.Tests --run webpack-dev-server --config ./webpack.tests.js",
+        "build": "dotnet tool restore && dotnet fable ./UserInterface --run vite build",
+        "test:live": "cd UserInterface.Tests && dotnet fable watch --run npx vite",
         "build:test": "dotnet fable ./UserInterface.Tests && webpack --config webpack.tests.js",
         "pretest": "dotnet tool restore && dotnet fable clean --yes",
         "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm"
@@ -16,6 +16,7 @@
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^3.1.0",
+        "mocha": "^11.5.0",
         "vite": "^4.1.0"
     }
 }
