@@ -1,0 +1,2 @@
+﻿[*.fs]
+fsharp_experimental_elmish = true

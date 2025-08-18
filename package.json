@@ -1,22 +1,31 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "prestart": "dotnet tool restore && dotnet fable clean --yes",
         "start": "dotnet fable watch ./UserInterface --runFast vite",
         "prebuild": "dotnet tool restore && dotnet fable clean --yes",
         "build": "dotnet tool restore && dotnet fable ./UserInterface --run vite build",
         "test:live": "cd UserInterface.Tests && dotnet fable watch --run npx vite",
-        "build:test": "dotnet fable ./UserInterface.Tests && webpack --config webpack.tests.js",
         "pretest": "dotnet tool restore && dotnet fable clean --yes",
         "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm"
     },
     "dependencies": {
+        "@radix-ui/react-slot": "^1.2.3",
+        "@tailwindcss/vite": "^4.1.11",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "date-fns": "^2.30.0",
+        "lucide-react": "^0.539.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "tailwind-merge": "^3.3.1",
+        "tailwindcss": "^4.1.11"
     },
     "devDependencies": {
-        "@vitejs/plugin-react": "^3.1.0",
+        "@vitejs/plugin-react": "^4.2.1",
         "mocha": "^11.5.0",
-        "vite": "^4.1.0"
+        "tw-animate-css": "^1.3.6",
+        "vite": "^5.1.4"
     }
 }
