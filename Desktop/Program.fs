@@ -12,7 +12,9 @@ open System.IO
 open System.Reflection
 
 let serverApi: IServerApi =
-  { Counter = fun () -> async { return { Value = 10 } }
+  let mutable count = 0
+
+  { Counter = fun () -> async { return count }
 
     SystemInfo =
       fun () ->
@@ -22,7 +24,12 @@ let serverApi: IServerApi =
               Version = Environment.OSVersion.VersionString }
         }
 
-    Update = fun () -> async { return 0 } }
+    Update =
+      fun () ->
+        async {
+          count <- count + 1
+          return ()
+        } }
 
 let webApi =
   Remoting.createApi ()
@@ -57,7 +64,7 @@ let desktopUrl =
   if isDevelopment
   // during development assume webpack dev server is running
   then
-    "http://localhost:8080"
+    "http://localhost:5173"
   // in release mode we run Suave on a random port
   // which will host the static files generated
   else
@@ -86,7 +93,7 @@ let main args =
   if isDevelopment then
     printfn "Suave server started"
     printfn "A Phontino window should pop up"
-    printfn "That window is running the user interface hosted by webpack at http://localhost:8080"
+    printfn "That window is running the user interface hosted by webpack at http://localhost:5173"
     printfn "Meanwhile the (Suave) backend is running on http://localhost:5000"
     printfn "Webpack dev server will proxy all HTTP calls to Suave during the development session"
 
