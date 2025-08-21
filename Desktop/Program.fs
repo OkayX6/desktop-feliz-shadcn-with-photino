@@ -7,7 +7,7 @@ open Suave
 open Shared
 open Fable.Remoting.Server
 open Fable.Remoting.Suave
-open PhotinoNET
+open Photino.NET
 open System.IO
 open System.Reflection
 
@@ -97,6 +97,6 @@ let main args =
     printfn "Meanwhile the (Suave) backend is running on http://localhost:5000"
     printfn "Webpack dev server will proxy all HTTP calls to Suave during the development session"
 
-  let window = new PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
+  let window = PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
   window.Center().Load(Uri(desktopUrl)).WaitForClose()
   0
