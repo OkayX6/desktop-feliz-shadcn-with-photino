@@ -1,44 +1,45 @@
 ﻿open System
 open System.IO
 open Fake.IO
+open Fake.Core
 open Tools
 open System.Text
+open Spec
 
-let path xs = Path.Combine(Array.ofList xs)
+initializeContext()
 
-let solutionRoot = Files.findParent __SOURCE_DIRECTORY__ "App.sln";
+let solutionRoot = Files.``App.sln``
+let desktop = Files.Desktop.``.``
+let clientDist = Path.combine Files.``.`` "dist"
 
-let desktop = path [ solutionRoot; "Desktop" ]
+Target.create Ops.Install <| fun _arg ->
+  run dotnet [ "tool"; "install"; "fable"; "--create-manifest-if-needed" ] Files.``.``
+  Fake.JavaScript.Npm.install (fun p ->
+    { p with
+        WorkingDirectory = Files.``.`` })
 
-let clientDist = path [ solutionRoot; "dist" ]
+Target.create Ops.Restore <| fun _arg ->
+  if not Args.quick then
+    run dotnet [ "tool"; "restore" ] Files.``.``
 
-let buildFor(runtime: Runtime) =
-    let releaseMode = Release
-    // build the desktop app in release mode
-    Dotnet.Publish(desktop, [
-        Dotnet.Configuration(releaseMode)
-        Dotnet.Runtime(runtime)
-        Dotnet.SelfContained()
-        Dotnet.PublishSingleFile()
-    ])
-    // build the frontend
-    Npm.Install(solutionRoot)
-    Npm.Run("build", solutionRoot)
-    // copy built client artifacts to the output
-    // the built application expects the static files to be at wwwroot
-    // relative to the executable directory
-    let executableOutput = path [ desktop; "bin"; releaseMode.Format(); "net5.0"; runtime.Format(); "publish" ]
-    let clientTarget = path [ executableOutput; "wwwroot" ]
-    Copy.DirectoryFrom(clientDist).To(clientTarget)
-    printfn $"✔️  The application was built successfully for '{runtime.Format()}'"
-    printfn $"✔️  Find the build artifacts at {executableOutput}"
+Target.create Ops.Dev <| fun _arg ->
+  [
+    "vite", vite [] Files.``.``
+    "fable", dotnet [ "tool"; "run"; "fable"; "watch" ] Files.UserInterface.``.``
+    if Args.suave then
+      "suave", dotnet [ "run" ] Files.Desktop.``.``
+    else
+      "aspnet", dotnet [ "run" ] Files.``Desktop.AspNet``.``.``
+  ]
+  |> runParallel
 
+open Fake.Core.TargetOperators
+let dependencies = [
+  Ops.Restore
+  ==> Ops.Dev
+]
 [<EntryPoint>]
-let main argv =
-    Console.OutputEncoding <- Encoding.UTF8
-    match argv with
-    | [| "build-win64"   |] -> buildFor(Runtime.Win10_x64)
-    | [| "build-linux64" |] -> buildFor(Runtime.Linux_x64)
-    | [| "build-osx64"   |] -> buildFor(Runtime.Osx_x64)
-    | otheriwse -> printfn "Build project"
-    0
+let main args =
+  Args.setArgs args
+  args[0] |> Target.runOrDefaultWithArguments
+  0

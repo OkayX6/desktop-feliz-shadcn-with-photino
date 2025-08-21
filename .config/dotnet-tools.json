@@ -3,22 +3,25 @@
   "isRoot": true,
   "tools": {
     "fable": {
-      "version": "4.0.1",
+      "version": "4.25.0",
       "commands": [
         "fable"
-      ]
+      ],
+      "rollForward": false
     },
     "femto": {
       "version": "0.17.1",
       "commands": [
         "femto"
-      ]
+      ],
+      "rollForward": false
     },
     "fantomas": {
       "version": "7.0.3",
       "commands": [
         "fantomas"
-      ]
+      ],
+      "rollForward": false
     }
   }
 }

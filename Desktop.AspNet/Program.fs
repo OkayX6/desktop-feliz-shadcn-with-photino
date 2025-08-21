@@ -12,7 +12,7 @@ open Fable.Remoting.AspNetCore
 open Shared
 
 module Program =
-  open PhotinoNET
+  open Photino.NET
   open Fable.Remoting.Server
   open System.Net.Sockets
   open System.Net
@@ -85,7 +85,7 @@ module Program =
 
     Task.Run(fun () -> app.Run()) |> ignore
 
-    let window = new PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
+    let window = PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
 
     window.Center().Load(Uri(desktopUrl)).WaitForClose()
 
