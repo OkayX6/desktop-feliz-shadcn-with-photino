@@ -15,9 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		package-lock.json = package-lock.json
 		package.json = package.json
 		README.md = README.md
-		webpack.common.js = webpack.common.js
-		webpack.config.js = webpack.config.js
-		webpack.tests.js = webpack.tests.js
 	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Desktop", "Desktop\Desktop.fsproj", "{A6B24A18-5A6A-4B34-ABD4-D5E43B7D54EA}"
@@ -28,7 +25,7 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Build", "Build\Build.fsproj
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.Tests", "Desktop.Tests\Desktop.Tests.fsproj", "{2359EB95-2034-43C9-B817-FA7C0E6D62F7}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop.AspNet", "Desktop.AspNet\Desktop.AspNet.fsproj", "{15669075-8B10-4470-B296-4F31CF843111}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Desktop", "Desktop\Desktop.fsproj", "{15669075-8B10-4470-B296-4F31CF843111}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UserInterface", "UserInterfaceInterface.fspr"{401209D4-25F1-4987-A40D-A0475EDEF74D}"
 EndProject
