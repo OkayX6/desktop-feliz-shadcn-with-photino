@@ -207,4 +207,5 @@ out
 .ionide
 *.fs.js
 *.fs.js.map
-dist
+dist/
+wwwroot/

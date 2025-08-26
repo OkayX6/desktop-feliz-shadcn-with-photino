@@ -5,6 +5,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Remove="wwwroot\**"/>
+        <None Include="wwwroot\**">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+
+    <ItemGroup>
         <Compile Include="Program.fs" />
     </ItemGroup>
 

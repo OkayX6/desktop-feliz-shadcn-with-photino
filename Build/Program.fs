@@ -27,7 +27,7 @@ let buildFor(runtime: Runtime) =
     // copy built client artifacts to the output
     // the built application expects the static files to be at wwwroot
     // relative to the executable directory
-    let executableOutput = path [ desktop; "bin"; releaseMode.Format(); "net5.0"; runtime.Format(); "publish" ]
+    let executableOutput = path [ desktop; "bin"; releaseMode.Format(); "net8.0"; runtime.Format(); "publish" ]
     let clientTarget = path [ executableOutput; "wwwroot" ]
     Copy.DirectoryFrom(clientDist).To(clientTarget)
     printfn $"✔️  The application was built successfully for '{runtime.Format()}'"

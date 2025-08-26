@@ -54,6 +54,12 @@ module Program =
     tcpListener.Stop()
     port
 
+  let hostUrl =
+    if isDevelopment then
+      "http://localhost:5000"
+    else
+      $"http://localhost:{randomPort}"
+
   let desktopUrl =
     if
       isDevelopment
@@ -76,12 +82,14 @@ module Program =
     let builder = WebApplication.CreateBuilder(args)
 
     // Configure the server to run on port 5000
-    builder.WebHost.UseUrls("http://localhost:5000")
+    builder.WebHost.UseUrls(hostUrl)
 
     let app = builder.Build()
 
-    // Add Remoting handler to the ASP.NET Core pipeline
-    app.UseRemoting(webApp)
+    app.UseRemoting(webApp) // Add Fable.Remoting handler to the ASP.NET Core pipeline
+
+    if not isDevelopment then
+      app.UseStaticFiles() |> ignore // In release mode, serve static files to host the website
 
     Task.Run(fun () -> app.Run()) |> ignore
 
