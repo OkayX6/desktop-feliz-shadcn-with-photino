@@ -1,9 +1,10 @@
 ## TODO
 
+- [ ] Maybe remove build and use npm instead 
+- [ ] migrate **README.md** content to make it meaningful
 - [x] Rename **Desktop.AspNet** to **Desktop** after it gets feature parity
   - [x] Needs static file hosting
 - [x] remove WebPack after its tested
-- [ ] migrate **README.md** content to make it meaningful
 - [x] migrate **package.json** after its tested and all scenarios are working
 - [x] add .editorconfig
 
