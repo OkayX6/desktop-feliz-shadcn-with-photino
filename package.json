@@ -4,10 +4,12 @@
     "scripts": {
         "prestart": "dotnet tool restore && dotnet fable clean --yes",
         "start": "concurrently --kill-others-on-fail -c red,blue 'npm:start:desktop' 'npm:start:ui'",
-        "start:desktop": "dotnet watch run --project Desktop",
+        "start:desktop": "dotnet watch run --project ./Desktop",
         "start:ui": "dotnet fable watch ./UserInterface --runFast vite",
         "prebuild": "dotnet tool restore && dotnet fable clean --yes",
-        "build": "dotnet tool restore && dotnet fable ./UserInterface --run vite build",
+        "build": "npm run build:ui && npm run build:desktop",
+        "build:ui": "dotnet tool restore && dotnet fable ./UserInterface --run vite build",
+        "build:desktop": "dotnet build -c Release ./Desktop",
         "test:live": "cd UserInterface.Tests && dotnet fable watch --run npx vite",
         "pretest": "dotnet tool restore && dotnet fable clean --yes",
         "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm"
