@@ -5,17 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs"/>
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.Remoting.AspNetCore" Version="2.43.0"/>
-        <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.0"/>
-        <PackageReference Include="Photino.NET" Version="2.1.9"/>
+        <PackageReference Include="Fable.Remoting.AspNetCore" Version="2.43.0" />
+        <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.0" />
+        <PackageReference Include="Photino.NET" Version="4.0.16" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Shared\Shared.fsproj"/>
+        <ProjectReference Include="..\Shared\Shared.fsproj" />
     </ItemGroup>
 
 </Project>

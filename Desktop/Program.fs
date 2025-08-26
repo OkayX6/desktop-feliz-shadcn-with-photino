@@ -1,4 +1,4 @@
-namespace Desktop.AspNet
+namespace Desktop
 
 #nowarn "20"
 
@@ -12,7 +12,7 @@ open Fable.Remoting.AspNetCore
 open Shared
 
 module Program =
-  open PhotinoNET
+  open Photino.NET
   open Fable.Remoting.Server
   open System.Net.Sockets
   open System.Net
