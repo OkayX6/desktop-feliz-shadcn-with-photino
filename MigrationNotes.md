@@ -1,7 +1,8 @@
 ## TODO
 
-- [ ] Maybe remove build and use npm instead 
+- [ ] Maybe remove build?
 - [ ] migrate **README.md** content to make it meaningful
+- [x] Use concurrently start to run start:desktop and start:ui in parallel
 - [x] Rename **Desktop.AspNet** to **Desktop** after it gets feature parity
   - [x] Needs static file hosting
 - [x] remove WebPack after its tested

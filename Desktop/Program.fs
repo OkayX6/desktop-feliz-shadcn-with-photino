@@ -54,7 +54,7 @@ module Program =
     tcpListener.Stop()
     port
 
-  let hostUrl =
+  let apiHostUrl =
     if isDevelopment then
       "http://localhost:5000"
     else
@@ -66,7 +66,7 @@ module Program =
     // during development assume vite dev server is running
     then
       "http://localhost:5173"
-    // in release mode we run Suave on a random port
+    // in release mode we run ASP.NET Core on a random port
     // which will host the static files generated
     else
       $"http://localhost:{randomPort}/index.html"
@@ -81,8 +81,8 @@ module Program =
   let main args =
     let builder = WebApplication.CreateBuilder(args)
 
-    // Configure the server to run on port 5000
-    builder.WebHost.UseUrls(hostUrl)
+    // Configure the server hosting URL
+    builder.WebHost.UseUrls(apiHostUrl)
 
     let app = builder.Build()
 
