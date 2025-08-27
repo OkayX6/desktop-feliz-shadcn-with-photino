@@ -21,7 +21,6 @@ module Program =
     let mutable count = 0
 
     { Counter = fun () -> async { return count }
-
       SystemInfo =
         fun () ->
           async {
@@ -29,7 +28,6 @@ module Program =
               { Platform = Environment.OSVersion.Platform.ToString()
                 Version = Environment.OSVersion.VersionString }
           }
-
       Update =
         fun () ->
           async {
