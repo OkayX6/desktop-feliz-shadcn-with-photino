@@ -9,7 +9,7 @@
         "prebuild": "dotnet tool restore && dotnet fable clean --yes",
         "build": "npm run build:ui && npm run build:desktop",
         "build:ui": "dotnet tool restore && dotnet fable ./UserInterface --run vite build",
-        "build:desktop": "dotnet build -c Release ./Desktop",
+        "build:desktop": "dotnet publish -c Release ./Desktop --self-contained true /p:PublishSingleFile=true /p:IncludeAllContentForSelfExtract=true",
         "pretest": "dotnet tool restore && dotnet fable clean --yes",
         "test:live": "cd UserInterface.Tests && dotnet fable watch --run npx vite",
         "test": "dotnet fable ./UserInterface.Tests --outDir dist/tests && mocha dist/tests -r esm"
