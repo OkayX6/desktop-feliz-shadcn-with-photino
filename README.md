@@ -6,7 +6,7 @@ of [Photino](https://www.tryphotino.io).
 Phontino hosts a lightweight chromium instance in a desktop window and this application embeds a full web application in
 it.
 
-Using [Asp.NET Core](https://github.com/dotnet/aspnetcore) as a mini embedded web server for the backend
+Using [ASP.NET Core](https://github.com/dotnet/aspnetcore) as a mini embedded web server for the backend
 and [Feliz](https://github.com/Zaid-Ajaj/Feliz)/React on the frontend.
 
 The frontend communicates with the backend via HTTP to access system APIs that are otherwise unavailable from the
@@ -41,22 +41,20 @@ npm install  # Get dependencies used, like vite
 npm start
 ```
 
-This will start the development server after compiling the project, once it is finished, navigate
-to http://localhost:5173 to view the application .
-
-While the frontend is running, go the `./Desktop` and run the application in debug mode using
-
-```
-dotnet restore
-dotnet run
-```
-
-This will do two things:
+This will start both the Web development server (`npm run start:ui`) and .NET app (`npm run start:desktop`) in watch mode.
+In detail:
 
 - Runs an ASP.NET Core backend in the background on port 5000 (API for the frontend)
 - Opens a Photino window navigating to localhost:5173 which is where the frontend is being hosted
 
 ## Build and package the application
+
+To package your app for your own platform, just:
+```bash
+npm run build
+```
+
+Otherwise:
 
 The `Build` project includes a couple of build targets to package up the application.
 
