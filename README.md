@@ -53,3 +53,17 @@ To package your app for your own platform, just:
 ```bash
 npm run build
 ```
+
+
+## Tests
+
+The template includes a test project that ready to go which you can either run in the browser in watch mode or run in the console using node.js and mocha. To run the tests in watch mode:
+```
+npm run test:live
+```
+This command starts a development server for the test application and makes it available at http://localhost:8081.
+
+To run the tests using the command line and of course in your CI server, you have to use the mocha test runner which doesn't use the browser but instead runs the code using node.js:
+```
+npm test
+```
