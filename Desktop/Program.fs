@@ -23,32 +23,32 @@ module Program =
     let initialDirectory = Assembly.GetExecutingAssembly().Location
     let mutable currentDirectory = initialDirectory
 
-    { CurrentFiles = fun () ->
-        async {
-          return {
-            DirectoryPath = currentDirectory
-            Files = Directory.EnumerateFiles(currentDirectory) |> Seq.toArray
-            Directories = Directory.EnumerateDirectories(currentDirectory) |> Seq.toArray
-          }
-        }
-      MoveUp = fun () -> async {
-        let parentDir = Directory.GetParent(currentDirectory)
-
-        if parentDir.Exists then
-          currentDirectory <- parentDir.FullName
-      }
-      GoToDirectory = fun (dirPath: string) ->
-        async {
-          if Directory.Exists(dirPath) then
-            currentDirectory <- dirPath
-        }
-
-      Reset =
+    { CurrentFiles =
         fun () ->
           async {
-            currentDirectory <- initialDirectory
+            return
+              { DirectoryPath = currentDirectory
+                Files = Directory.EnumerateFiles(currentDirectory) |> Seq.toArray
+                Directories =
+                  Directory.EnumerateDirectories(currentDirectory)
+                  |> Seq.toArray }
           }
-       }
+      MoveUp =
+        fun () ->
+          async {
+            let parentDir = Directory.GetParent(currentDirectory)
+
+            if parentDir.Exists then
+              currentDirectory <- parentDir.FullName
+          }
+      GoToDirectory =
+        fun (dirPath: string) ->
+          async {
+            if Directory.Exists(dirPath) then
+              currentDirectory <- dirPath
+          }
+
+      Reset = fun () -> async { currentDirectory <- initialDirectory } }
 
   let exitCode = 0
 
@@ -97,6 +97,7 @@ module Program =
     builder.WebHost.UseUrls(apiHostUrl)
 
     let app = builder.Build()
+
     do
       app.UseRemoting(webApp) // Add Fable.Remoting handler to the ASP.NET Core pipeline
 
