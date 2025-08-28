@@ -16,24 +16,39 @@ module Program =
   open Fable.Remoting.Server
   open System.Net.Sockets
   open System.Net
+  open System.Reflection
+  open System.IO
 
   let serverApi: IServerApi =
-    let mutable count = 0
+    let initialDirectory = Assembly.GetExecutingAssembly().Location
+    let mutable currentDirectory = initialDirectory
 
-    { Counter = fun () -> async { return count }
-      SystemInfo =
-        fun () ->
-          async {
-            return
-              { Platform = Environment.OSVersion.Platform.ToString()
-                Version = Environment.OSVersion.VersionString }
+    { CurrentFiles = fun () ->
+        async {
+          return {
+            DirectoryPath = currentDirectory
+            Files = Directory.EnumerateFiles(currentDirectory) |> Seq.toArray
+            Directories = Directory.EnumerateDirectories(currentDirectory) |> Seq.toArray
           }
-      Update =
+        }
+      MoveUp = fun () -> async {
+        let parentDir = Directory.GetParent(currentDirectory)
+
+        if parentDir.Exists then
+          currentDirectory <- parentDir.FullName
+      }
+      GoToDirectory = fun (dirPath: string) ->
+        async {
+          if Directory.Exists(dirPath) then
+            currentDirectory <- dirPath
+        }
+
+      Reset =
         fun () ->
           async {
-            count <- count + 1
-            return ()
-          } }
+            currentDirectory <- initialDirectory
+          }
+       }
 
   let exitCode = 0
 
@@ -78,21 +93,19 @@ module Program =
   [<EntryPoint; STAThread>]
   let main args =
     let builder = WebApplication.CreateBuilder(args)
-
     // Configure the server hosting URL
     builder.WebHost.UseUrls(apiHostUrl)
 
     let app = builder.Build()
+    do
+      app.UseRemoting(webApp) // Add Fable.Remoting handler to the ASP.NET Core pipeline
 
-    app.UseRemoting(webApp) // Add Fable.Remoting handler to the ASP.NET Core pipeline
+      if not isDevelopment then
+        app.UseStaticFiles() |> ignore // In release mode, serve static files to host the website
 
-    if not isDevelopment then
-      app.UseStaticFiles() |> ignore // In release mode, serve static files to host the website
-
-    Task.Run(fun () -> app.Run()) |> ignore
+      Task.Run(fun () -> app.Run())
 
     let window = new PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
-
     window.Center().Load(Uri(desktopUrl)).WaitForClose()
 
     exitCode
