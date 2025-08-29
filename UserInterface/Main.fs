@@ -7,4 +7,4 @@ open Fable.Core.JsInterop
 importAll "./styles/global.css"
 
 let root = ReactDOM.createRoot (document.getElementById "feliz-app")
-root.render (App.SystemInfo())
+root.render (App.Root())
