@@ -3,7 +3,6 @@ module App
 open Feliz
 open Feliz.UseDeferred
 open Feliz.Shadcn
-open Feliz
 
 
 [<ReactComponent>]

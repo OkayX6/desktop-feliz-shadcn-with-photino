@@ -3,19 +3,19 @@ module Desktop.Program
 #nowarn "20"
 
 open System
+open System.Net.Sockets
+open System.Net
+open System.Reflection
 open System.Threading.Tasks
+open System.IO
 open Microsoft.AspNetCore
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.Hosting
-open Fable.Remoting.AspNetCore
-open Shared
 open Photino.NET
+open Fable.Remoting.AspNetCore
 open Fable.Remoting.Server
-open System.Net.Sockets
-open System.Net
-open System.Reflection
-open System.IO
+open Shared
 
 let serverApi: IServerApi =
   let initialDirectory = 
@@ -108,7 +108,7 @@ let main args =
 
     Task.Run(fun () -> app.Run())
 
-  let window = new PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
+  let window = PhotinoWindow(Title = "Full Stack F# on Desktop (Using Photino)")
   window.Center().Load(Uri(desktopUrl)).WaitForClose()
 
   exitCode
