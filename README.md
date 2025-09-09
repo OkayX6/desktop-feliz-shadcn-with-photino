@@ -1,4 +1,4 @@
-# Feliz on Desktop with Photino (Experimental)
+# Feliz on Desktop with Photino
 
 Build a desktop application by embedding a small full stack F# web application in it with the help
 of [Photino](https://www.tryphotino.io).
